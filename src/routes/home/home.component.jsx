@@ -29,6 +29,7 @@ const Home = () => {
           "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
         }
       ]
+      
     return(
       <Categories categories={categories} />
     )
