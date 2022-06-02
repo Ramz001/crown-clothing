@@ -1,14 +1,17 @@
 .navigation {
-    height: 70px;
+    height: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 25px;
-  
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
     .logo-container {
       height: 100%;
-      width: 70px;
-      padding: 25px;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   
     .nav-links-container {
@@ -17,7 +20,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-  
+
       .nav-link {
         padding: 10px 15px;
         cursor: pointer;
@@ -26,7 +29,6 @@
       }
       .nav-link:hover{
         color: #000;
-      
       }
     }
   }
