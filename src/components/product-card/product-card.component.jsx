@@ -5,9 +5,9 @@ import { CartContext } from '../../contexts/cart.context';
 
 const ProductCard = ({ product }) => {
     const { name, imageUrl, price } = product;
-    const { addItemToCart } = useContext(CartContext);
+    const { changeItemInCart } = useContext(CartContext);
 
-    const addProductToCart = () => addItemToCart(product)
+    const addProductToCart = () => changeItemInCart(product, 'increment')
     
     return (
         <div className='product-card-container'>
