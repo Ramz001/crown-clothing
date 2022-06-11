@@ -23,7 +23,7 @@ const CheckoutItem = ({ cartItem }) => {
                 <div className='arrow' onClick={handleSubtract}>
                     &#10094;
                 </div>
-                <div className='value'>{ quantity }</div>
+                <span className='value'>{ quantity }</span>
                 <div className='arrow' onClick={handleAddition}>
                     &#10095;
                 </div>
