@@ -2,7 +2,7 @@ import './cart-dropdown.styles.scss';
 import { CartContext } from '../../contexts/cart.context';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import CartItem from '../cart-item/cart-item.component';
 
 const CartDropdown = () => {
@@ -20,7 +20,7 @@ const CartDropdown = () => {
                     ))
                 }
             </div>
-            <Button buttonType='inverted' onClick={goToCheckout}>
+            <Button buttonType={BUTTON_TYPE_CLASSES.inverted} onClick={goToCheckout}>
                 Checkout
             </Button>
         </div>
