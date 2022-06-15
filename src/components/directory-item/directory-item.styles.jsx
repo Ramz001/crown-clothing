@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
-export const DirectoryBodyContainer = styled(Link)`
+export const DirectoryBodyContainer = styled.div`
     height: 90px;
     padding: 0 25px;
     display: flex;

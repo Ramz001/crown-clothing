@@ -6,14 +6,10 @@ export const AuthenticationContainer = styled.div`
     justify-content: space-between;
     width: 55rem;
     margin: 1.5rem auto;
+
+    @media (min-width: 1024px){
+        flex-direction: row;
+    }
     
-    ${mediaQueries}
 `
 
-const mediaQueries = styled.css`
-    @media (min-width: 1024px){
-        ${AuthenticationContainer}{
-            flex-direction: row;
-        }
-    }
-`
