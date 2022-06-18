@@ -14,17 +14,17 @@ export const DirectoryBodyContainer = styled.div`
     border-radius: .55rem;
 
     h2 {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0 6px 0;
-    font-size: 22px;
-    color: #212;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0 6px 0;
+        font-size: 22px;
+        color: #212;
     }
 
     p {
-    font-weight: 250;
-    font-size: 14px;
-    color: #fdc400
+        font-weight: 250;
+        font-size: 14px;
+        color: #fdc400
     }
 `
 

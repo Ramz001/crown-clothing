@@ -1,14 +1,44 @@
-import { createContext, useState, useEffect } from "react";
-import SHOP_DATA from '../shop-data.js'
+import { createContext, useEffect, useReducer } from "react";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils.js";
+
 
 export const CategoriesContext = createContext({
     categoriesMap: {},
 });
 
+export const CATEGORIES_ACTION_TYPES = {
+    SET_CATEGORIES_MAP: "SET_CATEGORIES_MAP",
+};
+
+const CategoriesReducer = (state, action) => {
+    const { type, payload } = action;
+
+    switch (type) {
+        case CATEGORIES_ACTION_TYPES.SET_CATEGORIES_MAP:
+            return {
+                ...state,
+                categoriesMap: payload,
+            };
+        default:
+            throw console.error(
+                "CategoriesReducer: action type not recognized"
+            );
+    }
+}
+
+const INITIAL_STATE = {
+    categoriesMap: {},
+}
+
 export const CategoriesProvider = ({ children }) => {
-    const [categoriesMap, setCategoriesMap] = useState({});
-    const value = { categoriesMap }
+    const [{ categoriesMap }, dispatch] = useReducer(CategoriesReducer, INITIAL_STATE);
+
+    const setCategoriesMap =  ( e ) => {
+        dispatch({
+            type: CATEGORIES_ACTION_TYPES.SET_CATEGORIES_MAP,
+            payload: e,
+        });
+    }
 
     useEffect(()=>{
         const getCategoriesMap = async () => {
@@ -19,6 +49,8 @@ export const CategoriesProvider = ({ children }) => {
         getCategoriesMap()
     },[])
 
+    const value = { categoriesMap }
+    
     return (
         <CategoriesContext.Provider value={value}>
             {children}
