@@ -20,7 +20,7 @@ const UserReducer = (state, action) => {
                 currentUser: payload,
             }
         default:
-            throw console.error('UserReducer: action type not recognized');
+            throw new Error('UserReducer: action type not recognized');
     }
 }
 

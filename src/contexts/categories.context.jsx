@@ -20,9 +20,7 @@ const CategoriesReducer = (state, action) => {
                 categoriesMap: payload,
             };
         default:
-            throw console.error(
-                "CategoriesReducer: action type not recognized"
-            );
+            throw new Error("CategoriesReducer: action type not recognized");
     }
 }
 
