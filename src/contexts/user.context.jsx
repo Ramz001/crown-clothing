@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 import { createUserDocumentFromAuth, onAuthStateChangedListener } from '../utils/firebase/firebase.utils'
 
 export const UserContext = createContext({
@@ -43,16 +43,7 @@ export const UserProvider = ({ children }) => {
         setCurrentUser
     }
     
-    useEffect(() => {
-        const unsubscribe = onAuthStateChangedListener((user)=>{
-            if(user){
-                createUserDocumentFromAuth(user)
-            }
-            setCurrentUser(user)
-        })
-
-        return unsubscribe
-    }, [])
+    
 
     return(
         <UserContext.Provider value={value}>
