@@ -32,3 +32,10 @@ export const Total = styled.span`
   font-size: 36px;
   
 `
+
+export const CartMessage = styled.div`
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2.5rem;
+`
