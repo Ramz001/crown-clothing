@@ -9,14 +9,12 @@ import Checkout from './routes/checkout/checkout.component'
 import { 
   createUserDocumentFromAuth, 
   onAuthStateChangedListener,
-  getCategoriesAndDocuments 
 } from './utils/firebase/firebase.utils'
 
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { setCurrentUser } from './features/user/user.slice'
-import { setCategoriesMap } from './features/categories/categories.slice'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -26,20 +24,13 @@ const App = () => {
         if(user){
             createUserDocumentFromAuth(user)
         }
-        dispatch(setCurrentUser(user))
+        dispatch(setCurrentUser(JSON.stringify(user)))
     })
 
     return unsubscribe
   }, [])
 
-  useEffect(()=>{
-    const getCategoriesMap = async () => {
-        const categories = await getCategoriesAndDocuments();
-        dispatch(setCategoriesMap(categories));
-    }
-
-    getCategoriesMap()
-  },[])
+ 
 
   return (
     <Routes>

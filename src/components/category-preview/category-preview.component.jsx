@@ -4,12 +4,12 @@ import ProductCard from '../product-card/product-card.component';
 const CategoryPreview = ({ title, products }) => {
     return(
         <CategoryPreviewContainer>
-                <Title to={`/shop/${title}`}>{ title.toUpperCase() }</Title>
+            <Title to={`/shop/${title.toLowerCase()}`}>{ title }</Title>
             <Preview>
                 {
-                    products
+                    products.items
                         .filter((_, index ) => index < 4)
-                        .map(product => (
+                        .map(product  => (
                             <ProductCard key={product.id} product={product} />
                         ))
                 }

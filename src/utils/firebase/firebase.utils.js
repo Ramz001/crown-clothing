@@ -17,7 +17,8 @@ import {
     collection,
     writeBatch,
     query,
-    getDocs
+    getDocs,
+    DocumentSnapshot
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -43,7 +44,7 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
 
 export const db = getFirestore()
 
-export const  addCollectionsAndDocuments = async (collectionKey, objectsToAdd) => {
+export const addCollectionsAndDocuments = async (collectionKey, objectsToAdd) => {
     const collectionRef = collection(db, collectionKey)
     const batch = writeBatch(db)
 
@@ -61,13 +62,8 @@ export const getCategoriesAndDocuments = async () => {
     const q = query(collectionRef)
 
     const querySnapshot = await getDocs(q)
-    const categoriesMap = querySnapshot.docs.reduce((acc, docSnapshot) =>{
-        const { title, items } = docSnapshot.data()
-        acc[title.toLowerCase()] = items
-        return acc
-    },{})
 
-    return categoriesMap
+    return querySnapshot.docs.map(DocumentSnapshot => DocumentSnapshot.data())
 }   
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {

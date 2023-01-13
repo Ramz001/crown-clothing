@@ -5,12 +5,10 @@ import {
     NavLinkStyle,
  } from './navigation.styles'
 
-import { useContext } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Outlet } from "react-router-dom"
 
-import { CartContext } from '../../contexts/cart.context' 
 
 import { signOutUser } from '../../utils/firebase/firebase.utils'
 
@@ -20,8 +18,7 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 
 const Navigation = () => {
     const { currentUser } = useSelector(state => state.user)
-    const { isCartOpen } = useContext(CartContext)
-
+    const { isCartOpen } = useSelector(state => state.cart)
     return (
         <>
             <NavigationContainer>

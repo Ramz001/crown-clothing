@@ -1,32 +1,32 @@
-import { ProductCardContainer, Footer } from './product-card.styles';
-import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/cart.context';
-import useSound from 'use-sound';
-import WaterDropSoundEffect from '../../assets/water-drop.mp3';
+import { ProductCardContainer, Footer } from "./product-card.styles";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import { useDispatch } from "react-redux";
+import { changeCartItem, addItemToCart } from "../../features/cart/cart.slice";
 
 const ProductCard = ({ product }) => {
-    const [ play ] = useSound(WaterDropSoundEffect);
-    const { name, imageUrl, price } = product;
-    const { changeItemInCart } = useContext(CartContext);
+  const { name, imageUrl, price } = product;
+  const dispatch = useDispatch();
 
-    const addProductToCart = () => (changeItemInCart(product, 'increment'), play());
-    
-    return (
-        <ProductCardContainer>
-            <img src={ imageUrl }  alt={ name } loading='lazy' />
-            <Footer>
-                <span>{ name }</span>
-                <span>${ price }</span>
-            </Footer>
-            <Button 
-                buttonType={BUTTON_TYPE_CLASSES.inverted}
-                onClick={ addProductToCart }
-            >
-                Add to cart
-            </Button>
-        </ProductCardContainer>
-    )
-}
+  const addProductToCart = () => {
+    dispatch(addItemToCart({ cartItem: product }));
+    dispatch(changeCartItem({ cartItem: product, actionType: "increment" }));
+  }
 
-export default ProductCard
+  return (
+    <ProductCardContainer>
+      <img src={imageUrl} alt={name} loading="lazy" />
+      <Footer>
+        <span>{name}</span>
+        <span>${price}</span>
+      </Footer>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.inverted}
+        onClick={addProductToCart}
+      >
+        Add to cart
+      </Button>
+    </ProductCardContainer>
+  );
+};
+
+export default ProductCard;

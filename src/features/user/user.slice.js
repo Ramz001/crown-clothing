@@ -10,6 +10,7 @@ const user = createSlice({
     reducers:{
         setCurrentUser: (state, action) => {
             state.currentUser = action.payload
+            state.currentUser = JSON.parse(state.currentUser)
         }
     }
 })

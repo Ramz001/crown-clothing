@@ -1,19 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createDraftSafeSelector } from "@reduxjs/toolkit";
 
 const initialState = {
-    categoriesMap: {}
-}
+  categories: [],
+};
 
 const categories = createSlice({
-    name: 'categories',
-    initialState,
-    reducers: {
-        setCategoriesMap: (state, action) => {
-            state.categoriesMap = action.payload
-        }
+  name: "categories",
+  initialState,
+  reducers: {
+    setCategories: (state, action) => {
+      state.categories = action.payload;
+    },
+  },
+});
+
+export const selectCategories = createDraftSafeSelector(
+  (state) => state.categories,
+    (categories) => {
+        return categories.categories
     }
-})
+);
 
-export default categories.reducer
+export const selectCategoriesMap = createDraftSafeSelector(
+  [selectCategories],
+  (categories) =>
+    categories.reduce((acc, category) => {
+      const { title, items } = category;
+      acc[title.toLowerCase()] = items;
+      return acc;
+    }, {})
+);
 
-export const { setCategoriesMap } = categories.actions
+export const { setCategories } = categories.actions;
+
+export default categories.reducer;

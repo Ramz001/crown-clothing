@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { BaseButton, 
-  InvertedButton, 
+import { BaseButton, InvertedButton, 
   GoogleSignInButton } from "../button/button.styles";
 
 export const CartDropdownContainer = styled.div`
@@ -35,4 +34,19 @@ export const CartItems = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: .6rem;
+    background-color: #F2F2F2;
+    border-radius: 2rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: .5rem;
+    &:hover{
+      background-color: #545454
+    }
+  }
+  
 `

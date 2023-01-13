@@ -3,12 +3,13 @@ import { CheckoutContainer,
     Total, 
     HeaderBlock,
     CartMessage } from './checkout.styles';
-import { useContext } from 'react'
-import { CartContext } from '../../contexts/cart.context';
+import { useSelector } from 'react-redux';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
+
 const Checkout = () => {
-    const { cartItems, cartSum } = useContext(CartContext) 
+
+    const { cartItems, cartSum } = useSelector(state => state.cart)
 
     if(cartItems.length > 0) {
         return(

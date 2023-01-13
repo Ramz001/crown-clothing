@@ -11,6 +11,7 @@ export const Title = styled(Link)`
   font-size: 28px;
   margin-bottom: 25px;
   cursor: pointer;
+  text-transform: uppercase;
 `
 
 export const Preview = styled.div`
