@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
   const addProductToCart = () => {
     dispatch(addItemToCart({ cartItem: product }));
     dispatch(changeCartItem({ cartItem: product, actionType: "increment" }));
-  }
+  };
 
   return (
     <ProductCardContainer>

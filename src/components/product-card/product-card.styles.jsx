@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ProductCardContainer = styled.div`
   width: 100%;
@@ -7,17 +7,17 @@ export const ProductCardContainer = styled.div`
   height: 24rem;
   align-items: center;
   position: relative;
-  border-radius: .55rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);  
+  border-radius: 0.55rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 
   img {
     width: 100%;
     height: 90%;
     object-fit: cover;
     margin-bottom: 5px;
-    border-radius: .55rem .55rem 0 0;
+    border-radius: 0.55rem 0.55rem 0 0;
   }
-  
+
   button {
     width: 80%;
     opacity: 0.7;
@@ -27,7 +27,8 @@ export const ProductCardContainer = styled.div`
   }
 
   &:hover {
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
 
     img {
       opacity: 0.8;
@@ -38,7 +39,7 @@ export const ProductCardContainer = styled.div`
       display: flex;
     }
   }
-`
+`;
 
 export const Footer = styled.footer`
   width: 100%;
@@ -47,4 +48,4 @@ export const Footer = styled.footer`
   justify-content: space-between;
   font-size: 18px;
   padding: 0 1rem;
-`
+`;

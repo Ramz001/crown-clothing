@@ -1,10 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createDraftSafeSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isCartOpen: false,
   cartItems: [],
-  cartCount: 0,
-  cartSum: 0,
 };
 
 const cart = createSlice({
@@ -30,11 +28,6 @@ const cart = createSlice({
       state.cartItems = state.cartItems.filter(
         (cartItem) => cartItem.id !== payload.cartItem.id
       );
-      
-      state.cartCount = state.cartItems.reduce(
-        (acc, cartItem) => acc + cartItem.quantity,
-        0
-      );
     },
     changeCartItem: (state, { payload }) => {
       const { cartItem, actionType } = payload;
@@ -49,17 +42,34 @@ const cart = createSlice({
       if (actionType === "decrement") {
         currentCartItem.quantity--;
       }
-
-      state.cartCount = state.cartItems.reduce(
-        (acc, cartItem) => acc + cartItem.quantity,
-        0
-      );
-      state.cartSum = state.cartItems.reduce(
-        (acc, cartItem) => acc + cartItem.quantity * cartItem.price,
-        0
-      );
     },
   },
+});
+
+export const selectCart = createDraftSafeSelector(
+  (state) => state.cart,
+  (cart) => cart
+);
+
+export const selectCartItems = createDraftSafeSelector(
+  [selectCart],
+  (cart) => cart.cartItems
+);
+
+export const selectCartCount = createDraftSafeSelector([selectCart], (cart) => {
+  const newCartCount = cart.cartItems.reduce(
+    (acc, cartItem) => acc + cartItem.quantity,
+    0
+  );
+  return newCartCount;
+});
+
+export const selectCartSum = createDraftSafeSelector([selectCart], (cart) => {
+  const newCartSum = cart.cartItems.reduce(
+    (acc, cartItem) => acc + cartItem.quantity * cartItem.price,
+    0
+  );
+  return newCartSum;
 });
 
 export const {

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const CheckoutItemContainer = styled.div`
   width: 100%;
@@ -8,7 +8,7 @@ export const CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
-`
+`;
 
 export const ImageContainer = styled.div`
   width: 23%;
@@ -17,37 +17,37 @@ export const ImageContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
-    border-radius: .55rem;
+    border-radius: 0.55rem;
   }
-`
+`;
 
 export const Arrow = styled.div`
   cursor: pointer;
   height: 80%;
-  
-  &::selection{
+
+  &::selection {
     background: transparent;
-  }  
-`
+  }
+`;
 
-export const Name  = styled.span`
+export const Name = styled.span`
   width: 23%;
-`
+`;
 
-export const Price  = styled.span`
+export const Price = styled.span`
   width: 23%;
-`
+`;
 
 export const Value = styled.span`
   margin: 0 10px;
-`
+`;
 
 export const Quantity = styled.span`
-  width: 23%;  
+  width: 23%;
   display: flex;
-`
+`;
 
 export const RemoveButton = styled.span`
-  padding-left: .5rem;
+  padding-left: 0.5rem;
   cursor: pointer;
-`
+`;

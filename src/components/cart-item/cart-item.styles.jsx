@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const CartItemContainer = styled.div`
   width: 100%;
@@ -8,13 +8,13 @@ export const CartItemContainer = styled.div`
 
   img {
     width: 30%;
-    border-radius: .55rem;
+    border-radius: 0.55rem;
   }
-`
+`;
 
 export const Name = styled.span`
   font-size: 16px;
-`
+`;
 
 export const ItemDetails = styled.div`
   width: 70%;
@@ -23,4 +23,4 @@ export const ItemDetails = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 10px 20px;
-`
+`;

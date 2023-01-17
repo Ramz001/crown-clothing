@@ -16,9 +16,9 @@ const categories = createSlice({
 
 export const selectCategories = createDraftSafeSelector(
   (state) => state.categories,
-    (categories) => {
-        return categories.categories
-    }
+  (categories) => {
+    return categories.categories;
+  }
 );
 
 export const selectCategoriesMap = createDraftSafeSelector(
