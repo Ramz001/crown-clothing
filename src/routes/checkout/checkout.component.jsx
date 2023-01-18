@@ -8,6 +8,7 @@ import {
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   setIsCartOpen,
   selectCartSum,
@@ -18,9 +19,12 @@ const Checkout = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const cartSum = useSelector(selectCartSum);
+  const currentDirectory = useLocation();
 
   useEffect(() => {
-    dispatch(setIsCartOpen());
+    if (currentDirectory.pathname !== "/checkout") {
+      dispatch(setIsCartOpen());
+    }
   }, []);
 
   if (cartItems.length > 0) {
