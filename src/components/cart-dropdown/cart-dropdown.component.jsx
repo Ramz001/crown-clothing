@@ -3,11 +3,10 @@ import {
   EmptyMessage,
   CartItems,
 } from "./cart-dropdown.styles";
+// hooks
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { setIsCartOpen } from "../../features/cart/cart.slice";
-
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 
