@@ -7,7 +7,7 @@ import ProductCard from "../../components/product-card/product-card.component";
 import {
   selectCategoriesMap,
   selectCategoriesIsLoading,
-} from "../../features/categories/categories.slice";
+} from "../../features/categories/categories.selector";
 
 const Category = () => {
   const { category } = useParams();

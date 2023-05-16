@@ -4,7 +4,8 @@ import {
   ItemCount,
 } from "./cart-icon.styles";
 import { useSelector, useDispatch } from "react-redux";
-import { setIsCartOpen, selectCartCount } from "../../features/cart/cart.slice";
+import { selectCartCount } from "../../features/cart/cart.selector";
+import { setIsCartOpen } from "../../features/cart/cart.slice";
 
 const CartIcon = () => {
   const dispatch = useDispatch();
