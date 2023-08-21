@@ -5,6 +5,7 @@ import {
   HeaderBlock,
   CartMessage,
 } from "./checkout.styles";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { useSelector } from "react-redux";
 import { selectCartSum, selectCartItems } from "../../features/cart/cart.selector";
@@ -37,6 +38,7 @@ const Checkout = () => {
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))}
         <Total>Total: ${cartSum}</Total>
+        <PaymentForm />
       </CheckoutContainer>
     );
   }
