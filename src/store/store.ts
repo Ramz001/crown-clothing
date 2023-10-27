@@ -4,12 +4,6 @@ import { rootSaga } from "./root-saga";
 import {
   persistStore,
   persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -42,13 +36,11 @@ const store = configureStore({
     }).concat(sagaMiddleware),
 });
 
-// getDefaultMiddleware({
-//   serializableCheck: {
-//     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//   },
-
 sagaMiddleware.run(rootSaga)
 
 export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export default store;

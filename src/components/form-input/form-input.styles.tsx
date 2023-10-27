@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+type shrinkProps = {
+  shrink: number;
+}
+
 const subColor = "grey";
 const mainColor = "black";
 
@@ -19,7 +23,7 @@ export const FormInputLabel = styled.label`
   top: 10px;
   transition: 300ms ease all;
 
-  ${({ shrink }) => shrink && shringLabelStyles}
+  ${(props: shrinkProps) => props.shrink && shringLabelStyles}
 `;
 
 export const Input = styled.input`

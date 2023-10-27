@@ -5,7 +5,7 @@ import {
   FormContainer,
   PaymentFormContainer,
   PaymentButton,
-} from "./payment-form.styles";
+} from "./payment-form.styles.tsx";
 import { selectCartSum } from "../../features/cart/cart.selector";
 import { selectCurrentUser } from "../../features/user/user.selector";
 

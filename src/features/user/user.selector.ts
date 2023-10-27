@@ -1,6 +1,7 @@
 import { createDraftSafeSelector } from "@reduxjs/toolkit";
+import { RootState } from "../../store/store";
 
 export const selectCurrentUser = createDraftSafeSelector(
-  (state) => state.user,
+  (state:RootState) => state.user,
   (user) => user.currentUser
 )

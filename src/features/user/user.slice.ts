@@ -1,7 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
-  currentUser: null,
+type InitialState = {
+  currentUser: Object;
+  error: Error | null;
+}
+const initialState:InitialState = {
+  currentUser: {},
   error: null,
 };
 
@@ -12,23 +16,23 @@ const user = createSlice({
     checkUserSession: () => {},
     googleSignInStart: () => {},
     emailSignInStart: () => {},
-    signInSuccess: (state, action) => {
+    signInSuccess: (state, action:PayloadAction<Object>) => {
       state.currentUser = action.payload;
     },
-    signInFailed: (state, action) => {
+    signInFailed: (state, action:PayloadAction<Error>) => {
       state.error = action.payload;
     },
     signOutStart: () => {},
-    signOutSuccess: (state, action) => {
-      state.currentUser = null;
+    signOutSuccess: (state) => {
+      state.currentUser = {};
     },
-    signOutFailed: (state, action) => {
+    signOutFailed: (state, action: PayloadAction<Error>) => {
       state.error = action.payload;
     },
     signUpStart: () => {},
-    signUpFailed: (state, action) => {
+    signUpFailed: (state, action: PayloadAction<Error> ) => {
       state.error = action.payload;
-      alert(state.error.code);
+      alert(state.error);
     },
   },
 });
