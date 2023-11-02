@@ -11,6 +11,13 @@ export const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
 };
 
+type ButtonProps = {
+  children: Object;
+  buttonType: string;
+  isLoading?: boolean;
+  [otherProps: string]: any
+}
+
 const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
   ({
     [BUTTON_TYPE_CLASSES.base]: BaseButton,
@@ -18,7 +25,7 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
     [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
   }[buttonType]);
 
-const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading, ...otherProps }:ButtonProps) => {
   const CustomButton = getButton(buttonType);
 
   return (

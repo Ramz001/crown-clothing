@@ -1,6 +1,11 @@
 import { Input, FormInputLabel, Group } from "./form-input.styles";
 
-const FormInput = ({ label, ...otherProps }) => {
+type FormInputTypes = {
+  label: string;
+  [otherProps: string]: any
+}
+
+const FormInput = ({ label, ...otherProps }: FormInputTypes) => {
   return (
     <Group>
       <Input {...otherProps} />

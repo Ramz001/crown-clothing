@@ -12,11 +12,16 @@ import {
   changeCartItem,
   removeItemFromCart,
 } from "../../features/cart/cart.slice";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../utils/hooks/hooks";
+import { CartItemType } from "../../features/cart/cart.types";
 
-const CheckoutItem = ({ cartItem }) => {
+type CheckoutItemProps = {
+  cartItem: CartItemType;
+};
+
+const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
   const { name, quantity, imageUrl, price } = cartItem;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleAddition = () =>
     dispatch(changeCartItem({ cartItem, actionType: "increment" }));

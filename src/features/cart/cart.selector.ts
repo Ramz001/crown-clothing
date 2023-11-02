@@ -1,7 +1,8 @@
 import { createDraftSafeSelector } from "@reduxjs/toolkit";
+import { RootState } from "../../store/store";
 
 export const selectCart = createDraftSafeSelector(
-  (state) => state.cart,
+  (state: RootState) => state.cart,
   (cart) => cart
 );
 

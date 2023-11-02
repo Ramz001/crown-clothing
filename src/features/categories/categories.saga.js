@@ -10,7 +10,7 @@ export function* getCategoriesAsync() {
     const categoriesArray = yield call(getCategoriesAndDocuments, "categories");
     yield put(fetchCategoriesSuccess(categoriesArray))
   } catch(error){
-    yield put(fetchCategoriesFailed(error))
+    yield put(fetchCategoriesFailed(error.message))
   }
 }
 
