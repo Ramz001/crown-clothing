@@ -1,6 +1,7 @@
 import DirectoryItem from "../directory-item/directory-item.component";
 import { CategoriesContainer } from "./directory.styles";
 import { nanoid } from "nanoid";
+import { Category } from "../../features/categories/categories.types";
 
 const categories = [
   {
@@ -28,7 +29,7 @@ const categories = [
     title: "mens",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
   },
-];
+]
 
 const Directory = () => {
   return (

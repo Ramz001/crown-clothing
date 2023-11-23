@@ -1,11 +1,11 @@
 import CategoryPreview from "../../components/category-preview/category-preview.component";
 import Spinner from "../../components/spinner/spinner.component";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../utils/hooks/hooks";
 import { selectCategoriesIsLoading } from "../../features/categories/categories.selector";
 
 const CategoriesPreview = () => {
-  const { categories } = useSelector((state) => state.categories);
-  const isLoading = useSelector(selectCategoriesIsLoading);
+  const { categories } = useAppSelector((state) => state.categories);
+  const isLoading = useAppSelector(selectCategoriesIsLoading);
 
   return (
     <>

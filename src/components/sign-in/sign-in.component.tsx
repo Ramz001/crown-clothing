@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, ChangeEvent, FormEvent } from "react";
 import {
   googleSignInStart,
   emailSignInStart,
@@ -7,6 +6,7 @@ import {
 import { SignInContainer, ButtonsContainerStyles } from "./sign-in.styles";
 import FormInput from "../form-input/form-input.components";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import { useAppDispatch } from "../../utils/hooks/hooks";
 
 const defaultFormFields = {
   email: "",
@@ -16,9 +16,9 @@ const defaultFormFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormFields({
       ...formFields,
@@ -26,17 +26,17 @@ const SignIn = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       dispatch(emailSignInStart({ email, password }))
       setFormFields(defaultFormFields);
     } catch (error) {
-      if (error.code === "auth/wrong-password") {
+      if (error === "auth/wrong-password") {
         alert("Incorrect password!");
       }
-      if (error.code === "auth/user-not-found") {
+      if (error === "auth/user-not-found") {
         alert("No user associated with this email!");
       }
       console.log("error signing in", error);

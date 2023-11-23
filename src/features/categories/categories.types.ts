@@ -3,14 +3,14 @@ export type CategoryItem = {
   imageUrl: string;
   name: string;
   price: number;
-}
+};
 
 export type Category = {
   title: string;
   imageUrl: string;
   items: CategoryItem[];
-}
+};
 
 export type CategoryMap = {
-  [key: string]: CategoryItem[]
-}
+  [key: string]: CategoryItem[];
+};

@@ -6,8 +6,8 @@ import {
   PaymentFormContainer,
   PaymentButton,
 } from "./payment-form.styles";
-import { selectCartSum } from "../../features/cart/cart.selector.js";
-import { selectCurrentUser } from "../../features/user/user.selector.js";
+import { selectCartSum } from "../../features/cart/cart.selector";
+import { selectCurrentUser } from "../../features/user/user.selector";
 
 const PaymentForm = () => {
   const stripe = useStripe();

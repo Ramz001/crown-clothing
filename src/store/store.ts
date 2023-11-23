@@ -31,9 +31,9 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(sagaMiddleware),
+  getDefaultMiddleware({
+    serializableCheck: false,
+  }).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga)

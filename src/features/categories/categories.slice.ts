@@ -2,15 +2,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Category } from "./categories.types";
 
 type InitialState = {
-  categories: Category[]
-  isLoading: boolean;
-  error: string
-}
+  readonly categories: Category[];
+  readonly isLoading: boolean;
+  readonly error: string;
+};
 
-const initialState:InitialState = {
+const initialState: InitialState = {
   categories: [],
   isLoading: false,
-  error: '',
+  error: "",
 };
 
 const categories = createSlice({
@@ -20,11 +20,11 @@ const categories = createSlice({
     fetchCategoriesStart: (state) => {
       state.isLoading = true;
     },
-    fetchCategoriesSuccess: (state, action:PayloadAction<Category[]>) => {
+    fetchCategoriesSuccess: (state, action: PayloadAction<Category[]>) => {
       state.isLoading = false;
       state.categories = action.payload;
     },
-    fetchCategoriesFailed: (state, action:PayloadAction<string>) => {
+    fetchCategoriesFailed: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },

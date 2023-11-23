@@ -1,16 +1,17 @@
 import { ProductCardContainer, Footer } from "./product-card.styles";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import { useDispatch } from "react-redux";
 import { changeCartItem, addItemToCart } from "../../features/cart/cart.slice";
 import { CartItemType } from "../../features/cart/cart.types";
+import { useAppDispatch } from "../../utils/hooks/hooks";
+import { CategoryItem } from "../../features/categories/categories.types";
 
 type ProductCartTypes = {
-  product: CartItemType
+  product: CategoryItem 
 }
 
 const ProductCard = ({ product }: ProductCartTypes) => {
   const { name, imageUrl, price } = product;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const addProductToCart = () => {
     dispatch(addItemToCart({ cartItem: product }));

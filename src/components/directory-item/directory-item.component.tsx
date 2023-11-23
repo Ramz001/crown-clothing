@@ -6,11 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { Category } from "../../features/categories/categories.types";
 
 type DirectoryItemProps = {
-  category: Category
+  category: {
+    id: string;
+    title: string;
+    imageUrl: string 
+  }
 }
 
-const DirectoryItem = ({ category }: DirectoryItemProps) => {
-  const { title, imageUrl } = category;
+const DirectoryItem = (props: DirectoryItemProps) => {
+  const { title, imageUrl } = props.category;
   const navigate = useNavigate();
   const navigateCategoryItems = () => {
     navigate(`/shop/${title.toLowerCase()}`);

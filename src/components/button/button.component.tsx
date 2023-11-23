@@ -13,7 +13,7 @@ export const BUTTON_TYPE_CLASSES = {
 
 type ButtonProps = {
   children: Object;
-  buttonType: string;
+  buttonType?: string;
   isLoading?: boolean;
   [otherProps: string]: any
 }

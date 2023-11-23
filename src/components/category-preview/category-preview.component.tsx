@@ -5,6 +5,7 @@ import {
 } from "./category-preview.styles";
 import ProductCard from "../product-card/product-card.component";
 import { Category } from "../../features/categories/categories.types";
+import { CartItemType } from "../../features/cart/cart.types";
 
 type CategoryPreviewProps = {
   title: string;
