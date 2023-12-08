@@ -8,6 +8,13 @@ export const NavigationContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   border-bottom: solid #0001 1px;
+
+  @media screen and (max-width: 800px) {
+    height: 60px;
+    padding: .4rem .8rem;
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
 `;
 
 export const LogoContainer = styled(Link)`
@@ -16,6 +23,11 @@ export const LogoContainer = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 800px) {
+    width: 50px;
+    padding: 0;
+  }
 `;
 export const NavLinks = styled.div`
   width: 75%;

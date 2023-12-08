@@ -1,32 +1,43 @@
 import { Routes, Route } from "react-router-dom";
-
-import Home from "./routes/home/home.component";
-import Navigation from "./routes/navigation/navigation.component";
-import Authentication from "./routes/authentication/authentication.component";
-import Shop from "./routes/shop/shop.component";
-import Checkout from "./routes/checkout/checkout.component";
+import { Suspense, lazy } from "react";
 
 import { checkUserSession } from "./features/user/user.slice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+import { GlobalStyles } from "./global.styles";
+import Spinner from "./components/spinner/spinner.component";
+
+// Lazy loading for improved initial load
+const Home = lazy(() => import("./routes/home/home.component"));
+const Navigation = lazy(() =>
+  import("./routes/navigation/navigation.component")
+);
+const Authentication = lazy(() =>
+  import("./routes/authentication/authentication.component")
+);
+const Shop = lazy(() => import("./routes/shop/shop.component"));
+const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
+
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkUserSession())
-
+    dispatch(checkUserSession());
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />} />
-        <Route path="authentication" element={<Authentication />} />
-        <Route path="shop/*" element={<Shop />} />
-        <Route path="checkout" element={<Checkout />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<Spinner />}>
+      <GlobalStyles />
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="authentication" element={<Authentication />} />
+          <Route path="shop/*" element={<Shop />} />
+          <Route path="checkout" element={<Checkout />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 
